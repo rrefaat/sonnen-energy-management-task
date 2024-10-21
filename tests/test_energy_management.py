@@ -56,3 +56,21 @@ def test_energy_management_algorithm(dut, restore_device_state, system_setup, in
     print(f"Storage command: 'discharge', Storage status: {status}")
     assert status == "discharging", "Battery should discharge to meet house consumption"
     print("Test passed.")
+
+
+def test_fibonacci_generator():
+    """Test the Fibonacci generator"""
+    
+    dut = MockDUT()
+    device = DevicePage(dut)
+
+    # Use the fibonacci generator
+    fib_gen = device.fibonacci()
+
+    # Generate the first 10 Fibonacci numbers and compare with expected values
+    fib_sequence = [next(fib_gen) for _ in range(10)]
+    expected_sequence = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+    
+    assert fib_sequence == expected_sequence, f"Fibonacci sequence mismatch. Expected {expected_sequence}, got {fib_sequence}"
+
+    print("Fibonacci test passed.")

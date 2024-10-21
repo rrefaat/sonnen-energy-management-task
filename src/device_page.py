@@ -36,3 +36,10 @@ class DevicePage:
     def get_battery_storage(self):
         """Get the current battery storage value"""
         return int(self.dut.get("battery_storage"))
+    
+    def fibonacci(self):
+        """A generator for Fibonacci numbers"""
+        a, b = 0, 1
+        while True:
+            yield a
+            a, b = b, a + b
